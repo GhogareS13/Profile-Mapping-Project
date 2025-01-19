@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    width: 100%;
+    background-color: rgb(79, 193, 238);
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav li {
+    margin: 0 1rem;
+}
+
+.nav li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    display: block;
+    font-weight:bold;
+}
+
+.nav li a:hover {
+    background-color: #070000;
+}
+
+.nav-heading {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+.content {
+    margin-top: 60px; 
+    padding: 20px;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    
+}

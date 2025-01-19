@@ -1,0 +1,42 @@
+{
+  "profiles": [
+    {
+      "id": "1",
+      "name": "shruti",
+      "description": "frontend developer",
+      "photo": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTuDa5Bw1F8i8aefwFiBG0lbOCdp-kZnSKbachKXXQRKARWJCvzPNJdq8YJ5wSFLQ__kS1ifhvf45LNKIG35i3YV7tX4oNid0b4l8PlFZA",
+      "longitude": 18.501053205961334,
+      "latitude": 73.85581418317386
+    },
+    {
+      "id": "2",
+      "name": "akshay",
+      "description": "frontend developer",
+      "photo": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Akshay_Kumar_in_2017.jpg",
+      "latitude": 18.518020389567965,
+      "longitude": 73.81545451767842
+    },
+    {
+      "id": "5",
+      "name": "akshay",
+      "description": "frontend developer",
+      "latitude": 456,
+      "longitude": 51
+    },
+    {
+      "id": "6",
+      "name": "akshay",
+      "description": "frontend developer",
+      "latitude": 456,
+      "longitude": 51
+    },
+    {
+      "id": "7",
+      "name": "ishwari",
+      "photo": "https://img.freepik.com/premium-vector/female-lawyer-standing-with-books-courthouse-background_1263357-35271.jpg?semt=ais_hybrid",
+      "longitude": "18.501053205961334",
+      "latitude": "73.85581418317386",
+      "description": "company seceratary"
+    }
+  ]
+}
