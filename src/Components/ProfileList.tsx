@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card, CardMedia, CardContent, Typography, Box } from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, Box, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Search from './Search';
@@ -14,10 +14,9 @@ interface ProfileList {
 const ProfileList = () => {
   const [data, setData] = useState<ProfileList[]>([]);
   const [filteredProfiles, setFilteredProfiles] = useState<ProfileList[]>([]);
-  const [searchQuery, setSearchQuery] = useState<string>(''); // Store the search query
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const navigate = useNavigate();
 
-  // Fetch profiles from the API
   useEffect(() => {
     axios
       .get('http://localhost:3000/profiles')
@@ -29,9 +28,12 @@ const ProfileList = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  // Navigate to profile detail page
   const handleClick = (id: number) => {
-    navigate(`/details/${id}`); // Pass the profile id to navigate
+    navigate(`/details/${id}`);
+  };
+
+  const handleBack = () => {
+    navigate('/');
   };
 
   const removeDuplicates = (profiles: ProfileList[]): ProfileList[] => {
@@ -50,59 +52,77 @@ const ProfileList = () => {
       const filtered = data.filter((profile) =>
         profile.name.toLowerCase().includes(query.toLowerCase())
       );
-      setFilteredProfiles(removeDuplicates(filtered)); // Filter and remove duplicates
+      setFilteredProfiles(removeDuplicates(filtered));
     } else {
-      setFilteredProfiles(data); // Show all profiles if search is empty
+      setFilteredProfiles(data);
     }
   };
 
   return (
-    <Box sx={{ padding: '0 0' ,width:'100%',height:'100%'}}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100vw' }}>
+      {/* Header */}
       <Box
         sx={{
-          backgroundColor: 'rgb(79, 193, 238)', 
-          padding: '16px', 
-          
-          marginBottom: 2, 
+          backgroundColor: 'rgb(79, 193, 238)',
+          padding: '10px',
           display: 'flex',
-          justifyContent: 'space-between', 
+          justifyContent: 'space-between',
           alignItems: 'center',
+          width: '100vw',
+          boxSizing: 'border-box',
+          position: 'sticky',
+          top: 0,
+          zIndex: 1,
         }}
       >
-
-        <Typography variant="h5" sx={{ 
-          marginRight: 2,
-          color:'white',
-          fontWeight:'bold',
-          flexGrow: 1,
-          textAlign: 'center',
-          fontSize: '32px'
-
-           }}>
+        <Typography
+          variant="h5"
+          sx={{
+            color: 'white',
+            fontWeight: 'bold',
+            flexGrow: 1,
+            textAlign: 'center',
+            fontSize: '32px',
+            marginLeft: '20px'
+          }}
+        >
           List of Profiles
         </Typography>
-        <Box sx={{ marginLeft: 'auto' }}>
+        <Box sx={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: 2,
+          marginRight: '20px'
+        }}>
           <Search onSearch={handleSearch} searchQuery={searchQuery} />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleBack}
+          >
+            Back
+          </Button>
         </Box>
       </Box>
 
-      {/* Profile Cards */}
+      {/* Profile Cards Container */}
       <Box
         sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          width:'100%',
-          height:'100%'
+          flexGrow: 1,
+          backgroundColor: 'white',
+          padding: '24px',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+          gap: '16px',
+          width: '100vw',
+          boxSizing: 'border-box',
         }}
       >
         {filteredProfiles.map((profile) => (
           <Card
             key={profile.id}
             sx={{
-              width: '280px',
               height: '400px',
-              margin: 2,
               display: 'flex',
               flexDirection: 'column',
               transition: 'transform 0.3s ease, box-shadow 0.3s ease',
@@ -112,7 +132,7 @@ const ProfileList = () => {
                 cursor: 'pointer',
               },
             }}
-            onClick={() => handleClick(profile.id)} 
+            onClick={() => handleClick(profile.id)}
           >
             <CardMedia
               component="img"
@@ -125,8 +145,8 @@ const ProfileList = () => {
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'flex-end',
-                textAlign: 'center',
+                justifyContent: 'center',
+                alignItems: 'center',
                 flexGrow: 1,
               }}
             >

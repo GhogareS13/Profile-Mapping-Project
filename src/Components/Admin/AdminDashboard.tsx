@@ -33,6 +33,7 @@ const AdminDashboard = () => {
         <ul className='nav'>
           <li><Link to='/add'>Add Profiles</Link></li>
           <li><Link to='/manage'>Manage Profiles</Link></li>
+          <li><Link to='/home'>Home</Link></li>
         </ul>
       </nav>
 

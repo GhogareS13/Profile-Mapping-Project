@@ -10,6 +10,8 @@ interface Profile {
   photo: string;
   latitude:number;
   longitude:number;
+  contact:string;
+  interests:string[];
 }
 
 const getProfileById = async (id: string): Promise<Profile> => {
@@ -55,6 +57,9 @@ const ProfileDetail: React.FC = () => {
       });
     }
   };
+  const handleBack = () => {
+      navigate('/profile');
+      }
 
 return (
     <Box
@@ -75,10 +80,10 @@ return (
       <Paper
         elevation={3}
         sx={{
-          width: '90%',
-          height:'90%',
+          width: '100%',
+          height:'100%',
           maxWidth: '300px',
-          maxHeight:'300px',
+          maxHeight:'400px',
           padding: '40px',
           backgroundColor: 'rgba(255, 255, 255, 0.85)',
           borderRadius: '15px',
@@ -97,13 +102,23 @@ return (
           }}
         />
 
-        <Typography variant="h3" gutterBottom sx={{ fontSize: '2.5rem', fontWeight: 'bold' }}>
+        <Typography variant="h3" gutterBottom sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
           {profile.name}
         </Typography>
-        <Typography variant="body1" gutterBottom sx={{ fontSize: '1.2rem' }}>
-          {profile.description}
+        <Typography variant="body1" gutterBottom sx={{ fontSize: '1.0rem' }}>
+          Description : {profile.description}
         </Typography>
-        <Button variant="contained" color="primary" onClick={handleClick} sx={{ marginTop: '20px' }}>
+        <Typography variant="h3" gutterBottom sx={{ fontSize: '1.0rem'}}>
+          Contact : {profile.contact}
+        </Typography>
+        <Typography variant="h3" gutterBottom sx={{ fontSize: '1.0rem' }}>
+          Interests : {profile.interests}
+        </Typography>
+       
+        <Button variant="contained" color="primary" onClick={handleBack} sx={{ marginTop: '10px', marginRight:'10px' }}>
+          Back
+        </Button>
+        <Button variant="contained" color="primary" onClick={handleClick} sx={{ marginTop: '10px' }}>
           Summary
         </Button>
       </Paper>
